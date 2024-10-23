@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: mannazu-api-ingress
-  namespace: mannazu
+  name: nyamnyam-api-ingress
+  namespace: nyamnyam
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
-    # 실제 서비스 배포용
-    - host: api.mannazu.com
+    # 실제 서비스 배포용 
+    - host: api.nyamnyam.kr
       http:
         paths:
           - path: /
@@ -26,25 +26,11 @@ spec:
                 name: admin-service-stable
                 port:
                   number: 8080
-          - path: /auth(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: auth-service-stable
-                port:
-                  number: 8080
           - path: /chat(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
                 name: chat-service-stable
-                port:
-                  number: 8080
-          - path: /community(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: community-service-stable
                 port:
                   number: 8080
           - path: /post(/|$)(.*)
@@ -54,18 +40,11 @@ spec:
                 name: post-service-stable
                 port:
                   number: 8080
-          - path: /review(/|$)(.*)
+          - path: /restaurant(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: review-service-stable
-                port:
-                  number: 8080
-          - path: /shop(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: shop-service-stable
+                name: restaurant-service-stable
                 port:
                   number: 8080
           - path: /user(/|$)(.*)
@@ -73,72 +52,5 @@ spec:
             backend:
               service:
                 name: user-service-stable
-                port:
-                  number: 8080
-    # test 배포용 (canary)
-    - host: canaryapi.mannazu.com
-      http:
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: swagger-service-canary
-                port:
-                  number: 80
-          - path: /admin(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: admin-service-canary
-                port:
-                  number: 8080
-          - path: /auth(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: auth-service-canary
-                port:
-                  number: 8080
-          - path: /chat(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: chat-service-canary
-                port:
-                  number: 8080
-          - path: /community(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: community-service-canary
-                port:
-                  number: 8080
-          - path: /post(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: post-service-canary
-                port:
-                  number: 8080
-          - path: /review(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: review-service-stable
-                port:
-                  number: 8080
-          - path: /shop(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: shop-service-canary
-                port:
-                  number: 8080
-          - path: /user(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: user-service-canary
                 port:
                   number: 8080
