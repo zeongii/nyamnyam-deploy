@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mannazu-web-ingress
+  namespace: mannazu
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    # 현재 배포중인 서비스
+    - host: www.mannazu.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mannazu-nextjs
+                port:
+                  number: 80
+    # canary 테스트 서비스
+    - host: canary.mannazu.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mannazu-nextjs-canary
+                port:
+                  number: 80
