@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+  namespace: nyamnyam
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      containers:
+        - name: config-server
+          image: alrk/nyamnyam-config-server:latest
+          ports:
+            - containerPort: 8888
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: git
+            - name: SPRING_CLOUD_CONFIG_SERVER_GIT_URI
+              value: https://github.com/alrk14567/nyamnyam-config-server.git
+            - name: SPRING_CLOUD_CONFIG_SERVER_GIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: git-credentials
+                  key: username
+            - name: SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: git-credentials
+                  key: password
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config  # 설정 파일을 마운트할 경로
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config-server-config  # ConfigMap 이름, 필요에 따라 수정
+      imagePullSecrets:
+        - name: nyamnyam-regcred  # 이미지 풀 비밀 이름, 맞는지 확인
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+  namespace: nyamnyam
+spec:
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
+  selector:
+    app: config-server
