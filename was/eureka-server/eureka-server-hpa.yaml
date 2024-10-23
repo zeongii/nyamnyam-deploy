@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: chat-service-hpa
+  name: eureka-server-hpa
   namespace: nyamnyam
 spec:
   scaleTargetRef:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
-    name: chat-service
+    name: eureka-server
   minReplicas: 1
   maxReplicas: 1
   metrics:

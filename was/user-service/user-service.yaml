@@ -4,7 +4,7 @@ metadata:
   name: user-service
   namespace: nyamnyam
 spec:
-  replicas: 1
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: user-service
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: nyamnyam.kr/nyamnyam/user-service:206
+          image: docker.io/jeunseo/nyamnyam-user-service:latest
           ports:
             - containerPort: 8080
           resources:
@@ -41,7 +41,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service
+  name: user-service-stable
   namespace: nyamnyam
 spec:
   ports:

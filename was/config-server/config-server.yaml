@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: alrk/nyamnyam-config-server:latest
+          image: docker.io/jeunseo/nyamnyam-config-server:latest
           ports:
             - containerPort: 8888
           resources:
