@@ -15,10 +15,10 @@ spec:
         app: gateway-server
     spec:
       containers:
-        - name: gateway-server  # 이름을 gateway-server로 수정
+        - name: gateway-server
           image: docker.io/zeongii/nyamnyam-gateway-server:latest
           ports:
-            - containerPort: 8000  # Gateway 서버의 포트 설정
+            - containerPort: 8000
           resources:
             requests:
               cpu: 100m
@@ -29,19 +29,19 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: git
-            - name: SPRING_CLOUD_CONFIG_URI  # Gateway 서버는 Config 서버에서 설정을 로드
-              value: http://config-server:8888  # Config 서버의 주소를 지정
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://config-server:8888
             - name: SPRING_APPLICATION_NAME
               value: gateway-server
           volumeMounts:
             - name: gateway-volume
-              mountPath: /app/config  # 설정 파일을 마운트할 경로
+              mountPath: /app/config
       volumes:
         - name: gateway-volume
           configMap:
-            name: gateway-server  # ConfigMap 이름, 필요에 따라 수정
+            name: gateway-server
       imagePullSecrets:
-        - name: nyamnyam-regcred  # 이미지 풀 비밀 이름, 맞는지 확인
+        - name: nyamnyam-regcred
 ---
 apiVersion: v1
 kind: Service

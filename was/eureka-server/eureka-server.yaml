@@ -30,7 +30,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: git
             - name: SPRING_CLOUD_EUREKA_SERVER_GIT_URI
-              value: https://github.com/JEunseo/nyamnyam-eureka-server.git
+              value: https://github.com/zeongii/nyamnyam-msa-cloud.git
             - name: SPRING_CLOUD_EUREKA_SERVER_GIT_USERNAME
               valueFrom:
                 secretKeyRef:
