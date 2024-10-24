@@ -30,7 +30,7 @@ spec:
               mountPath: /app/config
           env:
             - name: SPRING_CONFIG_LOCATION
-              value: optional:configserver:http://211.188.55.210:8888/post-service/prod
+              value: file:/app/config/application.yaml
       volumes:
         - name: config-volume
           configMap:
