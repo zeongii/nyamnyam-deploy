@@ -34,7 +34,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: chat-service-config
+            name: chat-service
       imagePullSecrets:
         - name: nyamnyam-regcred
 ---

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway-server  # 이름을 gateway-server로 수정
-          image: docker.io/zeongiii/nyamnyam-gateway-server:latest
+          image: docker.io/zeongii/nyamnyam-gateway-server:latest
           ports:
             - containerPort: 8000  # Gateway 서버의 포트 설정
           resources:
@@ -39,7 +39,7 @@ spec:
       volumes:
         - name: gateway-volume
           configMap:
-            name: gateway-server-config  # ConfigMap 이름, 필요에 따라 수정
+            name: gateway-server  # ConfigMap 이름, 필요에 따라 수정
       imagePullSecrets:
         - name: nyamnyam-regcred  # 이미지 풀 비밀 이름, 맞는지 확인
 ---

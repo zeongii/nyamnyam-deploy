@@ -34,7 +34,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: user-service-config
+            name: user-service
       imagePullSecrets:
         - name: nyamnyam-regcred
 ---

@@ -34,7 +34,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: restaurant-service-config
+            name: restaurant-service
       imagePullSecrets:
         - name: nyamnyam-regcred
 ---

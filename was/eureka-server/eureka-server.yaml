@@ -47,7 +47,7 @@ spec:
       volumes:
         - name: eureka-volume
           configMap:
-            name: eureka-server-config  # ConfigMap 이름, 필요에 따라 수정
+            name: eureka-server  # ConfigMap 이름, 필요에 따라 수정
       imagePullSecrets:
         - name: nyamnyam-regcred  # 이미지 풀 비밀 이름, 맞는지 확인
 ---
