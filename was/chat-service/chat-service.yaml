@@ -30,7 +30,7 @@ spec:
               mountPath: /app/config
           env:
             - name: SPRING_CONFIG_LOCATION
-              value: optional:configserver:http://211.188.55.210:8888
+              value: optional:http://211.188.55.210:8888/chat-service/prod
       volumes:
         - name: config-volume
           configMap:
