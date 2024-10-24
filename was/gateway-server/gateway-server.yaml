@@ -29,8 +29,6 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: git
-            - name: SPRING_CLOUD_CONFIG_URI
-              value: file:/app/config/application.yaml
             - name: SPRING_APPLICATION_NAME
               value: gateway-server
           volumeMounts:
