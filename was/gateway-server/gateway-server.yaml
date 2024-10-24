@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway-server  # 이름을 gateway-server로 수정
-          image: docker.io/jeunseo/nyamnyam-gateway-server:latest
+          image: docker.io/zeongiii/nyamnyam-gateway-server:latest
           ports:
             - containerPort: 8000  # Gateway 서버의 포트 설정
           resources:

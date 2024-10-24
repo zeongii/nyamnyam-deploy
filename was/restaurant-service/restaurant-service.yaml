@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: restaurant-service
-          image: docker.io/jeunseo/nyamnyam-admin-service:latest
+          image: docker.io/zeongiii/nyamnyam-admin-service:latest
           ports:
             - containerPort: 8080
           resources:
