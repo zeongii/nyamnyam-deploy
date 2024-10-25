@@ -4,7 +4,7 @@ metadata:
   name: nyamnyam-api-ingress
   namespace: nyamnyam
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -16,41 +16,139 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: swagger-service
+                name: gateway-server
                 port:
-                  number: 80
-          - path: /admin(/|$)(.*)
+                  number: 8080
+          - path: /api/admin/(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: admin-service-stable
+                name: admin-service
                 port:
-                  number: 8080
-          - path: /chat(/|$)(.*)
+                  number: 8001
+          - path: /api/follow/(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: chat-service-stable
+                name: admin-service
                 port:
-                  number: 8080
-          - path: /post(/|$)(.*)
+                  number: 8001
+          - path: /api/notice/(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: post-service-stable
+                name: admin-service
                 port:
-                  number: 8080
-          - path: /restaurant(/|$)(.*)
+                  number: 8001
+          - path: /api/opinion/(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: restaurant-service-stable
+                name: admin-service
                 port:
-                  number: 8080
-          - path: /user(/|$)(.*)
+                  number: 8001
+          - path: /api/receipt/(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: user-service-stable
+                name: admin-service
                 port:
-                  number: 8080
+                  number: 8001
+          - path: /api/report/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: admin-service
+                port:
+                  number: 8001
+          - path: /api/chats/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: chat-service
+                port:
+                  number: 8002
+          - path: /api/chatRoom/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: chat-service
+                port:
+                  number: 8002
+          - path: /api/images/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: post-service
+                port:
+                  number: 8003
+          - path: /api/posts/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: post-service
+                port:
+                  number: 8003
+          - path: /api/images/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: post-service
+                port:
+                  number: 8003
+          - path: /api/replies/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: post-service
+                port:
+                  number: 8003
+          - path: /api/restaurant/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: post-service
+                port:
+                  number: 8003
+          - path: /api/tags/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: post-service
+                port:
+                  number: 8003
+          - path: /api/restaurant/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: restaurant-service
+                port:
+                  number: 8004
+          - path: /api/wishList/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: restaurant-service
+                port:
+                  number: 8004
+          - path: /api/user/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 8005
+          - path: /api/score/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 8005
+          - path: /api/thumbnails/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 8005
