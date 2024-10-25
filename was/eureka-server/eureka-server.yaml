@@ -57,6 +57,7 @@ metadata:
   name: eureka-server
   namespace: nyamnyam
 spec:
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8761

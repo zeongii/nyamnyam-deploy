@@ -47,6 +47,7 @@ metadata:
   name: gateway-server
   namespace: nyamnyam
 spec:
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8000
