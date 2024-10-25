@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,28 +27,38 @@ spec:
               cpu: 500m
               memory: 512Mi
           env:
+            - name: SPRING_APPLICATION_NAME
+              value: config-server
             - name: SPRING_PROFILES_ACTIVE
               value: git
             - name: SPRING_CLOUD_CONFIG_SERVER_GIT_URI
-              value: git@github.com:zeongii/nyamnyam-secret-server.git
+              value: https://github.com/zeongii/nyamnyam-secret-server.git
+            - name: SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT_LABEL
+              value: main
             - name: SPRING_CLOUD_CONFIG_SERVER_GIT_PRIVATE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ssh-credentials
-                  key: privateKey
-            - name: SPRING_CLOUD_CONFIG_SERVER_GIT_HOST_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: ssh-credentials
-                  key: hostKey
-            - name: SPRING_CLOUD_CONFIG_SERVER_ENCRYPT_ENABLED
-              value: "false"
+                  name: git-credentials
+                  key: ssh-privatekey
           volumeMounts:
             - name: config-volume
-              mountPath: /app/config
+              mountPath: /app/config  # 설정 파일을 마운트할 경로
       volumes:
         - name: config-volume
           configMap:
             name: config-server
       imagePullSecrets:
-        - name: nyamnyam-regcred
+        - name: nyamnyam-regcred  # 이미지 풀 비밀 이름, 맞는지 확인
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+  namespace: nyamnyam
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8888
+      targetPort: 8888
+  selector:
+    app: config-server

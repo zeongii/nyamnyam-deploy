@@ -35,7 +35,7 @@ spec:
             - name: gateway-volume
               mountPath: /app/config
       volumes:
-        - name: gateway-volume
+        - name: config-volume
           configMap:
             name: gateway-server
       imagePullSecrets:

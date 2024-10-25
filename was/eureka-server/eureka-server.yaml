@@ -45,7 +45,7 @@ spec:
             - name: eureka-volume
               mountPath: /app/config  # 설정 파일을 마운트할 경로
       volumes:
-        - name: eureka-volume
+        - name: config-volume
           configMap:
             name: eureka-server  # ConfigMap 이름, 필요에 따라 수정
       imagePullSecrets:
