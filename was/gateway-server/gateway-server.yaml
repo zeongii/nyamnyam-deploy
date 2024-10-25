@@ -32,7 +32,7 @@ spec:
             - name: SPRING_APPLICATION_NAME
               value: gateway-server
           volumeMounts:
-            - name: gateway-volume
+            - name: config-volume
               mountPath: /app/config
       volumes:
         - name: config-volume

@@ -42,7 +42,7 @@ spec:
                   name: git-credentials
                   key: password
           volumeMounts:
-            - name: eureka-volume
+            - name: config-volume
               mountPath: /app/config  # 설정 파일을 마운트할 경로
       volumes:
         - name: config-volume
