@@ -62,5 +62,6 @@ spec:
     - protocol: TCP
       port: 8761
       targetPort: 8761
+      nodePort: 31492
   selector:
     app: eureka-server
