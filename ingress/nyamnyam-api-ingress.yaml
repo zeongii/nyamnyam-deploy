@@ -9,7 +9,7 @@ spec:
   ingressClassName: nginx
   rules:
     # 실제 서비스 배포용 
-    - host: api.nyamnyam.kr
+    - host: nyamnyam.kr
       http:
         paths:
           - path: /
