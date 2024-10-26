@@ -41,6 +41,7 @@ metadata:
   name: post-service-stable
   namespace: nyamnyam
 spec:
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8080
