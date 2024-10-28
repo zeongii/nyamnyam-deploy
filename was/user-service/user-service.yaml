@@ -4,7 +4,7 @@ metadata:
   name: user-service
   namespace: nyamnyam
 spec:
-  revisionHistoryLimit: 1
+  replicas: 1
   selector:
     matchLabels:
       app: user-service
@@ -17,14 +17,14 @@ spec:
         - name: user-service
           image: docker.io/zeongiii/nyamnyam-user-service:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8005
           resources:
             requests:
               cpu: 100m
               memory: 256Mi
             limits:
               cpu: 500m
-              memory: 800Mi
+              memory: 512Mi
           volumeMounts:
             - name: config-volume
               mountPath: /app/config
@@ -41,13 +41,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service-stable
+  name: user-service
   namespace: nyamnyam
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8005
+      targetPort: 8005
   selector:
     app: user-service

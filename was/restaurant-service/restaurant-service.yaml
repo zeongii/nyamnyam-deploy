@@ -17,14 +17,14 @@ spec:
         - name: restaurant-service
           image: docker.io/zeongiii/nyamnyam-admin-service:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8004
           resources:
             requests:
-              cpu: 500m
-              memory: 250Mi
+              cpu: 100m
+              memory: 256Mi
             limits:
-              cpu: 1000m
-              memory: 1000Mi
+              cpu: 500m
+              memory: 512Mi
           volumeMounts:
             - name: config-volume
               mountPath: /app/config
@@ -41,13 +41,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: restaurant-service-stable
+  name: restaurant-service
   namespace: nyamnyam
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8004
+      targetPort: 8004
   selector:
     app: restaurant-service

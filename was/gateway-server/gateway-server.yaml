@@ -45,11 +45,10 @@ metadata:
   name: gateway-server
   namespace: nyamnyam
 spec:
-  type: LoadBalancer
+  type: LoadBalancer  # LoadBalancer 타입으로 설정
   ports:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-      nodePort: 30496
   selector:
     app: gateway-server

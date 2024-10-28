@@ -29,17 +29,13 @@ spec:
           env:
             - name: SPRING_CONFIG_LOCATION
               value: file:/app/config/application.yaml
-              valueFrom:
-                secretKeyRef:
-                  name: git-credentials
-                  key: ssh-privatekey
           volumeMounts:
             - name: config-volume
               mountPath: /app/config  # 설정 파일을 마운트할 경로
       volumes:
         - name: config-volume
           configMap:
-            name: eureka-server  # ConfigMap 이름, 필요에 따라 수정
+            name: eureka-server
       imagePullSecrets:
         - name: nyamnyam-regcred  # 이미지 풀 비밀 이름, 맞는지 확인
 ---
@@ -49,11 +45,10 @@ metadata:
   name: eureka-server
   namespace: nyamnyam
 spec:
-  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8761
       targetPort: 8761
-      nodePort: 31492
   selector:
     app: eureka-server
+  type: LoadBalancer

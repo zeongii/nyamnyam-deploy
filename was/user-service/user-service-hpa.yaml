@@ -9,7 +9,7 @@ spec:
     kind: Rollout
     name: user-service
   minReplicas: 1
-  maxReplicas: 2
+  maxReplicas: 1
   metrics:
     - type: Resource
       resource:
