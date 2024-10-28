@@ -28,6 +28,9 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /app/config
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: file:/app/config/application.yaml
       volumes:
         - name: config-volume
           configMap:

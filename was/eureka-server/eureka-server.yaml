@@ -27,20 +27,12 @@ spec:
               cpu: 500m
               memory: 512Mi
           env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: git
-            - name: SPRING_CLOUD_EUREKA_SERVER_GIT_URI
-              value: https://github.com/zeongii/nyamnyam-msa-cloud.git
-            - name: SPRING_CLOUD_EUREKA_SERVER_GIT_USERNAME
+            - name: SPRING_CONFIG_LOCATION
+              value: file:/app/config/application.yaml
               valueFrom:
                 secretKeyRef:
                   name: git-credentials
-                  key: username
-            - name: SPRING_CLOUD_EUREKA_SERVER_GIT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: git-credentials
-                  key: password
+                  key: ssh-privatekey
           volumeMounts:
             - name: config-volume
               mountPath: /app/config  # 설정 파일을 마운트할 경로
