@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway-server
-          image: docker.io/zeongii/nyamnyam-gateway-server:latest
+          image: docker.io/zeongiii/nyamnyam-gateway-server:latest
           ports:
             - containerPort: 8000
           resources:
