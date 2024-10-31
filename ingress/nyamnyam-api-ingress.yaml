@@ -8,6 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
+    # 실제 서비스 배포용
     - host: nyamnyam.kr
       http:
         paths:
@@ -15,6 +16,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: gateway-service
+                name: gateway-server
                 port:
                   number: 8000
