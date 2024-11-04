@@ -3,14 +3,17 @@ kind: Ingress
 metadata:
   name: nyamnyam-api-ingress
   namespace: nyamnyam
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+    - hosts:
+        - abc.nyamnyam.kr
+      secretName: nyamnyam-key
+  ingressClassName: nginx
   rules:
-    - host: nyamnyam.kr
+    - host: abc.nyamnyam.kr
       http:
         paths:
-          - path: /gateway
+          - path: /api
             pathType: Prefix
             backend:
               service:
