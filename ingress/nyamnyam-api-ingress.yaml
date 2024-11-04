@@ -10,7 +10,7 @@ spec:
     - host: nyamnyam.kr
       http:
         paths:
-          - path: /
+          - path: /gateway
             pathType: Prefix
             backend:
               service:
