@@ -29,9 +29,16 @@ spec:
           env:
             - name: SPRING_CONFIG_LOCATION
               value: file:/app/config/application.yaml
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: "gateway-server"
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: "false"
+            - name: EUREKA_INSTANCE_INSTANCE_ID
+              value: "gateway-server:${server.port}"
           volumeMounts:
             - name: config-volume
               mountPath: /app/config
+
       volumes:
         - name: config-volume
           configMap:
