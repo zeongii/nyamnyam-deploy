@@ -10,7 +10,7 @@ spec:
     - host: nyamnyam.kr
       http:
         paths:
-          - path: /gateway
+          - path: nyamnyam-gateway-server-d59fa-100204856-de2b39d996c7.kr.lb.naverncp.com
             pathType: Prefix
             backend:
               service:
