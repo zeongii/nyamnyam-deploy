@@ -6,14 +6,12 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
   rules:
-    # 실제 서비스 배포용
     - host: nyamnyam.kr
       http:
         paths:
-          - path: /
-            pathType: ImplementationSpecific
+          - path: /gateway
+            pathType: Prefix
             backend:
               service:
                 name: gateway-server
