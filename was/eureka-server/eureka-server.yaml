@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: eureka-server
-          image: docker.io/zeongiii/nyamnyam-eureka-server:latest
+          image: docker.io/zeongiii/nyamnyam-eureka-server:0.1
           ports:
             - containerPort: 8761
           resources:
