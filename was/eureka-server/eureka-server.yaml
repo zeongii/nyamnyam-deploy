@@ -29,6 +29,8 @@ spec:
           env:
             - name: SPRING_CONFIG_LOCATION
               value: file:/app/config/application.yaml
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: "http://eureka-server:8761/eureka"
           volumeMounts:
             - name: config-volume
               mountPath: /app/config  # 설정 파일을 마운트할 경로

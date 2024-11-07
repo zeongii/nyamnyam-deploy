@@ -31,6 +31,8 @@ spec:
           env:
             - name: SPRING_CONFIG_LOCATION
               value: file:/app/config/application.yaml
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: "http://eureka-server:8761/eureka"
             - name: EUREKA_INSTANCE_HOSTNAME
               value: "restaurant-service"
             - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
