@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: chat-service
-          image: docker.io/zeongiii/nyamnyam-chat-service:1.0
+          image: docker.io/zeongiii/nyamnyam-chat-service:1.1
           ports:
             - containerPort: 8002
           resources:
