@@ -30,7 +30,7 @@ spec:
             - name: SPRING_APPLICATION_NAME
               value: config-server
             - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-              value: "http://eureka-server:8761/eureka"
+              value: "http://eureka:8761/eureka/"
             - name: SPRING_PROFILES_ACTIVE
               value: git
             - name: SPRING_CLOUD_CONFIG_SERVER_GIT_URI
